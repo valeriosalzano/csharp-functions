@@ -148,6 +148,7 @@ namespace csharp_functions
 
                             } while (!isNumberValid);
 
+                            Console.WriteLine($"L'elemento alla posizione {userNumber} della successione di Fibonacci è {GetNthFibonacci(userNumber)}.");
                             break;
                         }
                     case "0":
@@ -262,5 +263,22 @@ namespace csharp_functions
             }
 
         }
+
+        // recursive function to get the n-th number in Fibonacci sequence
+        static int GetNthFibonacci(int n)
+        {
+            int nNumber;
+
+            if ( n <= 1) // impostare a <= 2 se partiamo dalla posizione 1
+            {
+                nNumber = 1;
+            } else
+            {
+                nNumber = GetNthFibonacci(n-1)+GetNthFibonacci(n-2);
+            }
+
+            return nNumber;
+        }
+ 
     }
 }
