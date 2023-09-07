@@ -28,10 +28,11 @@ namespace csharp_functions
 
                      userChoice = Console.ReadLine();
 
-                    if(userChoice == null)
+                    validUserInput = userChoice != "";
+
+                    if(!validUserInput)
                     {
                         Console.WriteLine("Inserisci un comando.");
-                        validUserInput = false;
                     }
 
                 } while (!validUserInput);
@@ -40,6 +41,8 @@ namespace csharp_functions
                 {
                     case ("1"):
                         {
+                            Console.WriteLine(Environment.NewLine + "--- Esecuzione di 1. Base ---" + Environment.NewLine);
+
                             int[] myArray = { 2, 6, 7, 5, 3, 9 };
 
                             //Stampare l’array di numeri fornito a video
@@ -57,10 +60,14 @@ namespace csharp_functions
 
                             //Stampare la somma di tutti i numeri elevati al quadrati
                             Console.WriteLine($"La somma dei numeri dell'array dopo aver elevato al quadrato: {SumArrayElements(SquareArrayElements(myArray))}.");
+
+                            Console.WriteLine(Environment.NewLine + "-----------------" + Environment.NewLine);
                             break;
                         }
                     case "2":
                         {
+                            Console.WriteLine(Environment.NewLine + "--- Esecuzione di 2. Bonus ---" + Environment.NewLine);
+
                             int arrayLength;
                             bool isLengthValid = true;
 
@@ -102,10 +109,12 @@ namespace csharp_functions
                             //Stampare la somma di tutti i numeri elevati al quadrati
                             Console.WriteLine($"La somma dei numeri dell'array dopo aver elevato al quadrato: {SumArrayElements(SquareArrayElements(myArray))}.");
 
+                            Console.WriteLine(Environment.NewLine + "-----------------" + Environment.NewLine);
                             break;
                         }
                     case "3":
                         {
+                            Console.WriteLine(Environment.NewLine + "--- Esecuzione di  3. Fattoriale ---" + Environment.NewLine);
                             Console.WriteLine("Questo programma calcola il fattoriale di un numero.");
                             // Una funzione che, dato un numero intero n > 0, ne calcoli il fattoriale
                             int userNumber;
@@ -126,10 +135,13 @@ namespace csharp_functions
                             } while (!isNumberValid);
 
                             Console.WriteLine($"Il fattoriale di {userNumber} è {GetFactorial(userNumber)}.");
+
+                            Console.WriteLine(Environment.NewLine + "-----------------" + Environment.NewLine);
                             break;
                         }
                     case "4":
                         {
+                            Console.WriteLine(Environment.NewLine + "--- Esecuzione di 4. Fibonacci ---" + Environment.NewLine);
                             // Una funzione che, dato un numero intero n >= 0, restituisca l'n-esimo elemento della sequenza di Fibonacci.
                             int userNumber;
                             bool isNumberValid = true;
@@ -149,10 +161,13 @@ namespace csharp_functions
                             } while (!isNumberValid);
 
                             Console.WriteLine($"L'elemento alla posizione {userNumber} della successione di Fibonacci è {GetNthFibonacci(userNumber)}.");
+
+                            Console.WriteLine(Environment.NewLine + "-----------------" + Environment.NewLine);
                             break;
                         }
                     case "0":
                         {
+                            Console.WriteLine(Environment.NewLine + "--- Il programma sta per terminare ---" + Environment.NewLine);
                             keepPlaying = false;
                             Console.WriteLine("Alla prossima!");
                             break;
@@ -254,9 +269,9 @@ namespace csharp_functions
         // recursive function to get a number factorial
         static int GetFactorial(int n)
         {
-            if(n - 1 == 1)
+            if(n - 1 < 1)
             {
-                return n * (n - 1);
+                return 1;
             } else
             {
                 return n * GetFactorial(n - 1);
