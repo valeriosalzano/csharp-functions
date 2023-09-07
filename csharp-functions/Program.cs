@@ -67,7 +67,7 @@ namespace csharp_functions
                             do
                             {
                                 Console.Write("Scegli la lunghezza dell'array. ");
-                                arrayLength = getIntFromUser();
+                                arrayLength = GetIntFromUser();
 
                                 isLengthValid = (arrayLength > 0);
 
@@ -83,7 +83,7 @@ namespace csharp_functions
                             for (int i = 0; i < arrayLength; i++)
                             {
                                 Console.Write($"Scegli il {i+1}° elemento. ");
-                                myArray[i] = getIntFromUser();
+                                myArray[i] = GetIntFromUser();
                             }
 
                             //Stampare l’array di numeri fornito a video
@@ -114,7 +114,7 @@ namespace csharp_functions
                             do
                             {
                                 Console.Write("Scegli un numero maggiore di zero. ");
-                                userNumber = getIntFromUser();
+                                userNumber = GetIntFromUser();
 
                                 isNumberValid = (userNumber > 0);
 
@@ -125,12 +125,29 @@ namespace csharp_functions
 
                             } while (!isNumberValid);
 
-                            Console.WriteLine($"Il fattoriale di {userNumber} è {getFactorial(userNumber)}.");
+                            Console.WriteLine($"Il fattoriale di {userNumber} è {GetFactorial(userNumber)}.");
                             break;
                         }
                     case "4":
                         {
                             // Una funzione che, dato un numero intero n >= 0, restituisca l'n-esimo elemento della sequenza di Fibonacci.
+                            int userNumber;
+                            bool isNumberValid = true;
+
+                            do
+                            {
+                                Console.Write("Scegli un numero maggiore o uguale zero. ");
+                                userNumber = GetIntFromUser();
+
+                                isNumberValid = (userNumber >= 0);
+
+                                if (!isNumberValid)
+                                {
+                                    Console.WriteLine("Digita un numero valido!");
+                                }
+
+                            } while (!isNumberValid);
+
                             break;
                         }
                     case "0":
@@ -217,7 +234,7 @@ namespace csharp_functions
         }
 
         // function to get an integer number from user
-        static int getIntFromUser()
+        static int GetIntFromUser()
         {
             int userNumber;
             bool validInput = true;
@@ -234,14 +251,14 @@ namespace csharp_functions
         }
 
         // recursive function to get a number factorial
-        static int getFactorial(int n)
+        static int GetFactorial(int n)
         {
             if(n - 1 == 1)
             {
                 return n * (n - 1);
             } else
             {
-                return n * getFactorial(n - 1);
+                return n * GetFactorial(n - 1);
             }
 
         }
