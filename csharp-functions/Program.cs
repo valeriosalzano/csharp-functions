@@ -15,7 +15,9 @@ namespace csharp_functions
                 Console.WriteLine(" ----- Menù ------ ");
                 Console.WriteLine(" 1. Base");
                 Console.WriteLine(" 2. Bonus");
-                Console.WriteLine(" 3. Exit");
+                Console.WriteLine(" 3. Fattoriale");
+                Console.WriteLine(" 4. Fibonacci");
+                Console.WriteLine(" 0. Exit");
                 Console.WriteLine(" ----------------- ");
 
                 bool validUserInput = true;
@@ -67,14 +69,11 @@ namespace csharp_functions
                                 Console.Write("Scegli la lunghezza dell'array. ");
                                 arrayLength = getIntFromUser();
 
+                                isLengthValid = (arrayLength > 0);
+
                                 if( arrayLength <= 0 )
                                 {
                                     Console.WriteLine("Digita una lunghezza valida!");
-                                    isLengthValid = false;
-                                }
-                                else
-                                {
-                                    isLengthValid = true;
                                 }
 
                             } while (!isLengthValid);
@@ -106,6 +105,35 @@ namespace csharp_functions
                             break;
                         }
                     case "3":
+                        {
+                            Console.WriteLine("Questo programma calcola il fattoriale di un numero.");
+                            // Una funzione che, dato un numero intero n > 0, ne calcoli il fattoriale
+                            int userNumber;
+                            bool isNumberValid = true;
+
+                            do
+                            {
+                                Console.Write("Scegli un numero maggiore di zero. ");
+                                userNumber = getIntFromUser();
+
+                                isNumberValid = (userNumber > 0);
+
+                                if (!isNumberValid)
+                                {
+                                    Console.WriteLine("Digita un numero valido!");
+                                }
+
+                            } while (!isNumberValid);
+
+                            Console.WriteLine($"Il fattoriale di {userNumber} è {getFactorial(userNumber)}.");
+                            break;
+                        }
+                    case "4":
+                        {
+                            // Una funzione che, dato un numero intero n >= 0, restituisca l'n-esimo elemento della sequenza di Fibonacci.
+                            break;
+                        }
+                    case "0":
                         {
                             keepPlaying = false;
                             Console.WriteLine("Alla prossima!");
@@ -203,6 +231,19 @@ namespace csharp_functions
             } while (!validInput);
 
             return userNumber;
+        }
+
+        // recursive function to get a number factorial
+        static int getFactorial(int n)
+        {
+            if(n - 1 == 1)
+            {
+                return n * (n - 1);
+            } else
+            {
+                return n * getFactorial(n - 1);
+            }
+
         }
     }
 }
